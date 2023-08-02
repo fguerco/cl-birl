@@ -1,2 +1,2 @@
 (defpackage #:cl-birl-test
-  (:use #:cl #:cl-birl))
+  (:use #:cl :fiveam #:cl-birl))

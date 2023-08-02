@@ -6,9 +6,9 @@
 (defun ce-quer-ver-essa-porra? (&rest essa-porra)
   (format t "~{~a~^ ~}~%" essa-porra))
 
-(defmacro que-que-ce-quer-monstrao? (var &body builder)
+(defmacro que-que-ce-quer-monstrao? (prompt var &body builder)
   `(progn
-     (princ "que que ce quer monstrao? ")
+     (princ ,prompt)
      (let ((,var (read-line)))
        ,@builder)))
 

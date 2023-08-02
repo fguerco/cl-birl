@@ -39,6 +39,9 @@ Loop com pulo e saída
 ```
 Output
 ```
+essa porra: 1
+essa porra: 3
+essa porra: 5
 ```
 
 Loop while
@@ -49,6 +52,9 @@ Loop while
 ```
 Output
 ```
+bora! 5
+bora! 4
+bora! 3
 ```
 
 Prompt
@@ -59,6 +65,8 @@ Prompt
 ```
 Output
 ```
+que que ce quer monstrao? 13
+bambam disse: 13
 ```
 
 Condicional
@@ -69,10 +77,11 @@ Condicional
   (que-nao-vai-dar-o-que? (< 11 2)
     (ce-quer-ver-essa-porra? "quero mais!"))
   (nao-vai-dar-nao
-    (ce-quer-ver-essa-porra? "nao va dar nao")))
+    (ce-quer-ver-essa-porra? "nao vai dar nao")))
 ```
 Output
 ```
+nao vai dar nao
 ```
 
 Função
