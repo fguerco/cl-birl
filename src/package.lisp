@@ -1,5 +1,5 @@
-(defpackage #:cl-birl
-  (:use #:cl)
+(defpackage :cl-birl
+  (:use :cl)
   (:export #:hora-do-show
            #:ce-quer-ver-essa-porra?
            #:que-que-ce-quer-monstrao?

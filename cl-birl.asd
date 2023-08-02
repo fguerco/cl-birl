@@ -1,4 +1,4 @@
-(asdf:defsystem #:cl-birl
+(asdf:defsystem :cl-birl
   :name "Birl Language in Common Lisp"
   :version "1.0.0"
   :author "Felipe Guerço Oliveira <felipeguerco@gmail.com>"
@@ -12,11 +12,12 @@
 
 (asdf:defsystem #:cl-birl/test
   :license "MIT"
-  :depends-on (#:cl-birl #:fiveam)
+  :depends-on (:cl-birl :parachute)
   :components ((:module "test"
                 :serial t
                 :components ((:file "package")
+                             (:file "test-utils")
                              (:file "birl-test"))))
   :perform (test-op (op c)
-                    (symbol-call '#:5am '#:run-all-tests)))
+                    (symbol-call :parachute :test :cl-birl-test)))
 
