@@ -6,9 +6,9 @@
 (defun ce-quer-ver-essa-porra? (&rest essa-porra)
   (format t "~{~a~^ ~}~%" essa-porra))
 
-(defmacro que-que-ce-quer-monstrao? (prompt var &body builder)
+(defmacro que-que-ce-quer-monstrao? (var &body builder)
   `(progn
-     (princ ,prompt)
+     (princ "que que ce quer monstrao? ")
      (let ((,var (read-line)))
        ,@builder)))
 
@@ -17,13 +17,13 @@
      ,@(mapcar #'macroexpand-1 builder)))
 
 (defmacro ele-que-a-gente-quer? (test &body builder)
-  (list test `(progn ,@builder)))
+  `(,test ,@builder))
 
 (defmacro que-nao-vai-dar-o-que? (test &body builder)
-  (list test `(progn ,@builder)))
+  `(,test ,@builder))
 
 (defmacro nao-vai-dar-nao (&body builder)
-  (list t `(progn ,@builder)))
+  `(t ,@builder))
 
 (defmacro oh-o-homi-ai-po (name lambda-list &body builder)
   `(defun ,name ,lambda-list
@@ -38,13 +38,13 @@
      ,@builder
     monstro))
 
-(defmacro negativa-bambam ((var value) loop-condition  &body builder)
-  `(mais-quero-mais ((,var ,value)) ((not ,loop-condition))
+(defmacro negativa-bambam ((var value) step-form loop-condition  &body builder)
+  `(mais-quero-mais ((,var ,value ,step-form)) ((not ,loop-condition))
     ,@builder))
         
 
-(defmacro sai-filho-da-puta ()
-  `(return))
+(defmacro sai-filho-da-puta (&optional value)
+  `(return ,value))
 
 (defmacro vamo-monstro ()
   `(go monstro))

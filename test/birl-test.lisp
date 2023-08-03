@@ -1,38 +1,34 @@
 (in-package :cl-birl-test)
 
+(define-test test-output-single
+  (capture-io (:out-var output)
+    (ce-quer-ver-essa-porra? "sample")
+    (is string-equal (multiline-string "sample") output)))
+
 (define-test test-loop-jumps
   "Test for loop and jumps"
-  (capture-io (:out-var output)
-    (hora-do-show
-      (mais-quero-mais ((m 0 (1+ m))) ((= m 10))
+  (is equal '(5 3 1)
+      (mais-quero-mais ((m 0 (1+ m)) (results nil)) ((= m 10))
         (ta-comigo-porra
           (ele-que-a-gente-quer? (= m 7)
-            (sai-filho-da-puta))
+            (sai-filho-da-puta results))
           (que-nao-vai-dar-o-que? (evenp m)
             (vamo-monstro)))
-        (ce-quer-ver-essa-porra? "essa porra:" m)))
-    
-    (is string-equal (multiline-string "essa porra: 1"
-                                        "essa porra: 3"
-                                        "essa porra: 5")
-                      output)))
+      (push m results))))
 
 (define-test test-loop-while
   "Test for while loop"
-  (capture-io (:out-var output)
-    (negativa-bambam (x 5) (> x 2)
-      (ce-quer-ver-essa-porra? "bora!" x)
-      (decf x))
-    (is string-equal (multiline-string "bora! 5"
-                                        "bora! 4"
-                                        "bora! 3")
-                      output)))
+  (is string-equal "543"
+      (with-output-to-string (st)
+        (negativa-bambam (x 5) (1- x) (> x 2)
+          (princ x st)))))
 
 (define-test test-input
   "Test for getting input from user"
   (capture-io (:input "é 13 memo" :out-var output)
-    (que-que-ce-quer-monstrao? "é 13? " input
-      (is string-equal input "é 13 memo"))))
+    (que-que-ce-quer-monstrao? input
+      (is string-equal "que que ce quer monstrao? " output)
+      (is string-equal "é 13 memo" input))))
       
 
 (define-test test-if
