@@ -66,7 +66,7 @@ nao vai dar nao
 
 Loop com skip e saída
 ```lisp
-;; define variavel m, a cada step decrementa m e sai do loop quando m = 10
+;; define variavel m, a cada step incrementa m e sai do loop quando m = 10
 (mais-quero-mais ((m 0 (1+ m))) ((= m 10))
   (ta-comigo-porra
     (ele-que-a-gente-quer? (= m 7)
